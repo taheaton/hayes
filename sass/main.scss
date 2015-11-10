@@ -1,0 +1,25 @@
+// Put any @imports here
+// See Readme for a list of supported ones
+
+@import "foundation";
+@import "bourbon";
+@import "font-awesome";
+
+
+body {
+  @include linear-gradient(to top, #DCDCDC, #00BFFF,#98F5FF);
+
+}
+h1 {
+  font-family: 'Play', sans-serif;
+  margin-left: 15px;
+}
+
+.container{
+  width: 500px;
+  margin: 15px auto;
+  
+}
+
+
+
