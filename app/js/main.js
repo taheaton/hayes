@@ -43,7 +43,7 @@ Object.defineProperty(exports, '__esModule', {
 var HomeController = function HomeController($scope) {
 
   $scope.title = 'J.S. Hayes, Inc.';
-  $scope.titleTwo = 'SAS Enterprise Consultant';
+  $scope.titleTwo = 'SAS Enterprise Consulting';
 
   $scope.aboutText = 'I am some about text';
 
@@ -56,6 +56,27 @@ exports['default'] = HomeController;
 module.exports = exports['default'];
 
 },{}],3:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+var ImageController = function ImageController($scope) {
+
+  $scope.title = 'J.S. Hayes, Inc.';
+  $scope.titleTwo = 'SAS Enterprise Consulting';
+
+  $scope.aboutText = 'I am some about text';
+
+  $scope.contactText = 'I am some contact text';
+};
+
+ImageController.$inject = ['$scope'];
+
+exports['default'] = ImageController;
+module.exports = exports['default'];
+
+},{}],4:[function(require,module,exports){
 'use strict';
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -74,9 +95,13 @@ var _controllersHomeController = require('./controllers/home.controller');
 
 var _controllersHomeController2 = _interopRequireDefault(_controllersHomeController);
 
-_angular2['default'].module('app', ['ui.router']).config(_config2['default']).controller('HomeController', _controllersHomeController2['default']);
+var _controllersImgController = require('./controllers/img.controller');
 
-},{"./config":1,"./controllers/home.controller":2,"angular":6,"angular-ui-router":4}],4:[function(require,module,exports){
+var _controllersImgController2 = _interopRequireDefault(_controllersImgController);
+
+_angular2['default'].module('app', ['ui.router']).config(_config2['default']).controller('HomeController', _controllersHomeController2['default']).controller('ImageController', _controllersImgController2['default']);
+
+},{"./config":1,"./controllers/home.controller":2,"./controllers/img.controller":3,"angular":7,"angular-ui-router":5}],5:[function(require,module,exports){
 /**
  * State-based routing for AngularJS
  * @version v0.2.15
@@ -4447,7 +4472,7 @@ angular.module('ui.router.state')
   .filter('isState', $IsStateFilter)
   .filter('includedByState', $IncludedByStateFilter);
 })(window, window.angular);
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.7
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -33352,11 +33377,11 @@ $provide.value("$locale", {
 })(window, document);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":5}]},{},[3])
+},{"./angular":6}]},{},[4])
 
 
 //# sourceMappingURL=main.js.map

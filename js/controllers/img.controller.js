@@ -1,4 +1,4 @@
-let HomeController = function ($scope) {
+let ImageController = function ($scope) {
 
   $scope.title = 'J.S. Hayes, Inc.';
     $scope.titleTwo = 'SAS Enterprise Consulting';
@@ -6,9 +6,8 @@ let HomeController = function ($scope) {
   $scope.aboutText = 'I am some about text';
 
   $scope.contactText = 'I am some contact text';
-
 };
 
-HomeController.$inject = ['$scope'];
+ImageController.$inject = ['$scope'];
 
-export default HomeController;
+export default ImageController;

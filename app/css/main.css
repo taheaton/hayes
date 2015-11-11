@@ -8408,16 +8408,22 @@ th.hide-for-touch {
   content: ""; }
 
 body {
-  background-color: #DCDCDC;
-  background-image: -webkit-linear-gradient(bottom, #DCDCDC, #00BFFF, #98F5FF);
-  background-image: linear-gradient(to top,#DCDCDC, #00BFFF, #98F5FF); }
+  background: url("https://images.unsplash.com/photo-1443557661966-8b4795a6f62c?ixlib=rb-0.3.5&q=80&fm=jpg&w=1080&fit=max&s=90c9b93842dc0e7f838e81f6b1116852"); }
 
-h1 {
+.fa {
+  float: right;
+  margin: 13px; }
+
+.homecontainer h2, h3, p {
+  color: white; }
+
+.top-title {
   font-family: 'Play', sans-serif;
-  margin-left: 15px; }
+  margin-left: 15px;
+  color: white; }
 
-.container {
-  width: 500px;
-  margin: 15px auto; }
+h2 {
+  font-family: 'Play', sans-serif;
+  font-size: 2em; }
 
 /*# sourceMappingURL=main.css.map */
