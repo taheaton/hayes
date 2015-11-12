@@ -5,9 +5,7 @@ let config = function ($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('root', {
       abstract: true,
-      controller: ['$scope', function ($scope) {
-        $scope.siteTitle = 'Angular!';
-      }],
+      
       templateUrl: 'templates/layout.tpl.html'
     })
     .state('root.home', {
@@ -24,6 +22,21 @@ let config = function ($stateProvider, $urlRouterProvider) {
       url: '/contact',
       controller: 'HomeController',
       templateUrl: 'templates/contact.tpl.html'
+    })
+    .state('root.list', {
+      url: '/',
+      controller: 'ListController',
+      templateUrl: 'templates/list.tpl.html'
+    })
+    .state('root.single', {
+      url: '/single/:whiskeyId',
+      controller: 'SingleController',
+      templateUrl: 'templates/single.tpl.html'
+    })
+    .state('root.add', {
+      url: '/add',
+      controller: 'AddController',
+      templateUrl: 'templates/add.tpl.html'
     });
 
 };

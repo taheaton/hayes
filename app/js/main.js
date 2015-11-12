@@ -10,9 +10,7 @@ var config = function config($stateProvider, $urlRouterProvider) {
 
   $stateProvider.state('root', {
     abstract: true,
-    controller: ['$scope', function ($scope) {
-      $scope.siteTitle = 'Angular!';
-    }],
+
     templateUrl: 'templates/layout.tpl.html'
   }).state('root.home', {
     url: '/',
@@ -26,6 +24,18 @@ var config = function config($stateProvider, $urlRouterProvider) {
     url: '/contact',
     controller: 'HomeController',
     templateUrl: 'templates/contact.tpl.html'
+  }).state('root.list', {
+    url: '/',
+    controller: 'ListController',
+    templateUrl: 'templates/list.tpl.html'
+  }).state('root.single', {
+    url: '/single/:whiskeyId',
+    controller: 'SingleController',
+    templateUrl: 'templates/single.tpl.html'
+  }).state('root.add', {
+    url: '/add',
+    controller: 'AddController',
+    templateUrl: 'templates/add.tpl.html'
   });
 };
 
@@ -40,19 +50,16 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var HomeController = function HomeController($scope) {
+var AddController = function AddController($scope, ContactService) {
 
-  $scope.title = 'J.S. Hayes, Inc.';
-  $scope.titleTwo = 'SAS Enterprise Consulting';
-
-  $scope.aboutText = 'I am some about text';
-
-  $scope.contactText = 'I am some contact text';
+  $scope.addContact = function (obj) {
+    ContactService.addContact(obj).then(function (res) {
+      $scope.contact = {};
+    });
+  };
 };
-
-HomeController.$inject = ['$scope'];
-
-exports['default'] = HomeController;
+AddController.$inject = ['$scope', 'ContactService'];
+exports['default'] = AddController;
 module.exports = exports['default'];
 
 },{}],3:[function(require,module,exports){
@@ -61,22 +68,56 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var ImageController = function ImageController($scope) {
+var HomeController = function HomeController($scope) {
 
-  $scope.title = 'J.S. Hayes, Inc.';
+  $scope.title = 'EXPERT SAS INSTALLATION AND ADMINISTRATION';
   $scope.titleTwo = 'SAS Enterprise Consulting';
 
   $scope.aboutText = 'I am some about text';
 
   $scope.contactText = 'I am some contact text';
+
+  
 };
 
-ImageController.$inject = ['$scope'];
+HomeController.$inject = ['$scope'];
 
-exports['default'] = ImageController;
+exports['default'] = HomeController;
 module.exports = exports['default'];
 
 },{}],4:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+var ListController = function ListController($scope, ContactService) {
+
+  ContactService.getContacts().then(function (res) {
+    $scope.contacts = res.data.results;
+  });
+};
+ListController.$inject = ['$scope', 'ContactService'];
+exports['default'] = ListController;
+module.exports = exports['default'];
+
+},{}],5:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+var SingleController = function SingleController($scope, $stateParams, ContactService) {
+
+  ContactService.getContact($stateParams.contactId).then(function (res) {
+    $scope.singleContact = res.data;
+  });
+};
+SingleController.$inject = ['$scope', '$stateParams', 'ContactService'];
+exports['default'] = SingleController;
+module.exports = exports['default'];
+
+},{}],6:[function(require,module,exports){
 'use strict';
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -95,13 +136,86 @@ var _controllersHomeController = require('./controllers/home.controller');
 
 var _controllersHomeController2 = _interopRequireDefault(_controllersHomeController);
 
-var _controllersImgController = require('./controllers/img.controller');
+var _controllersAddController = require('./controllers/add.controller');
 
-var _controllersImgController2 = _interopRequireDefault(_controllersImgController);
+var _controllersAddController2 = _interopRequireDefault(_controllersAddController);
 
-_angular2['default'].module('app', ['ui.router']).config(_config2['default']).controller('HomeController', _controllersHomeController2['default']).controller('ImageController', _controllersImgController2['default']);
+var _controllersListController = require('./controllers/list.controller');
 
-},{"./config":1,"./controllers/home.controller":2,"./controllers/img.controller":3,"angular":7,"angular-ui-router":5}],5:[function(require,module,exports){
+var _controllersListController2 = _interopRequireDefault(_controllersListController);
+
+var _controllersSingleController = require('./controllers/single.controller');
+
+var _controllersSingleController2 = _interopRequireDefault(_controllersSingleController);
+
+var _servicesContactService = require('./services/contact.service');
+
+var _servicesContactService2 = _interopRequireDefault(_servicesContactService);
+
+_angular2['default'].module('app', ['ui.router']).constant('PARSE', {
+  URL: "https://api.parse.com/1/",
+  CONFIG: {
+    headers: {
+      'X-Parse-Application-Id': 'RUI0eVrObvApF6FDocHgEsvLfFkixKB1lVN9bO9k',
+      'X-Parse-REST-API-Key': 'TJduuakbFPVCAyNbAFqWyXfBej9oMilyvM0gZWzx'
+    }
+  }
+}).config(_config2['default']).controller('HomeController', _controllersHomeController2['default']).controller('AddController', _controllersAddController2['default']).controller('ListController', _controllersListController2['default']).controller('SingleController', _controllersSingleController2['default']).service('ContactService', _servicesContactService2['default']);
+
+},{"./config":1,"./controllers/add.controller":2,"./controllers/home.controller":3,"./controllers/list.controller":4,"./controllers/single.controller":5,"./services/contact.service":7,"angular":10,"angular-ui-router":8}],7:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+var WhiskeyService = function WhiskeyService($http, PARSE) {
+
+  var url = PARSE.URL + 'classes/whiskey';
+
+  var checkAuth = function checkAuth() {
+    return true;
+  };
+
+  this.getWhiskeys = function () {
+    if (checkAuth()) {
+      return $http({
+        url: url,
+        headers: PARSE.CONFIG.headers,
+        method: 'GET',
+        cache: true
+      });
+    }
+  };
+
+  this.getWhiskey = function (whiskeyId) {
+    if (checkAuth()) {
+      return $http({
+        method: 'GET',
+        url: url + '/' + whiskeyId,
+        headers: PARSE.CONFIG.headers,
+        cache: true
+      });
+    }
+  };
+
+  var Whiskey = function Whiskey(obj) {
+    this.name = obj.name;
+    this.maker = obj.maker;
+    this.hasTried = false;
+  };
+
+  this.addWhiskey = function (obj) {
+    var w = new Whiskey(obj);
+    return $http.post(url, w, PARSE.CONFIG);
+  };
+};
+
+WhiskeyService.$inject = ['$http', 'PARSE'];
+
+exports['default'] = WhiskeyService;
+module.exports = exports['default'];
+
+},{}],8:[function(require,module,exports){
 /**
  * State-based routing for AngularJS
  * @version v0.2.15
@@ -4472,7 +4586,7 @@ angular.module('ui.router.state')
   .filter('isState', $IsStateFilter)
   .filter('includedByState', $IncludedByStateFilter);
 })(window, window.angular);
-},{}],6:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.7
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -33377,11 +33491,11 @@ $provide.value("$locale", {
 })(window, document);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],7:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":6}]},{},[4])
+},{"./angular":9}]},{},[6])
 
 
 //# sourceMappingURL=main.js.map
