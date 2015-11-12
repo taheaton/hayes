@@ -15,12 +15,12 @@ let config = function ($stateProvider, $urlRouterProvider) {
     })
     .state('root.about', {
       url: '/about',
-      controller: 'HomeController',
+      controller: 'AboutController',
       templateUrl: 'templates/about.tpl.html'
     })
     .state('root.contact', {
       url: '/contact',
-      controller: 'HomeController',
+      controller: 'ContactController',
       templateUrl: 'templates/contact.tpl.html'
     })
     .state('root.list', {
@@ -29,14 +29,9 @@ let config = function ($stateProvider, $urlRouterProvider) {
       templateUrl: 'templates/list.tpl.html'
     })
     .state('root.single', {
-      url: '/single/:whiskeyId',
+      url: '/single/:contactId',
       controller: 'SingleController',
       templateUrl: 'templates/single.tpl.html'
-    })
-    .state('root.add', {
-      url: '/add',
-      controller: 'AddController',
-      templateUrl: 'templates/add.tpl.html'
     });
 
 };

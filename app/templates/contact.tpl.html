@@ -1,11 +1,15 @@
-<h2>Contact page</h2>
 
-<p>{{ contactText }}</p>
 
-<h3>Add</h3>
+  <div class="contact-form">
+    <h3>{{ title }}<span>{{ titletwo }}</span></h3>
+  <form ng-submit="addContact(contact)">
+    <input placeholder="Contact Name" ng-model="contact.name">
+    <input placeholder="Company Name" ng-model="contact.company">
 
-<form ng-submit="addContact(contact)">
-  <input placeholder="Contact Name" ng-model="contact.name">
-  <input placeholder="Contact E-Mail" ng-model="contact.email">
-  <button>Add</button>
-</form>
+    <input placeholder="email" ng-model="contact.email" type="email">
+    <input placeholder="phone" ng-model="contact.phone" type="tel">
+    <textarea placeholder="What can we help you with?" ng-model="contact.comment"></textarea>
+
+    <button>Submit</button>
+  </form>
+  </div>

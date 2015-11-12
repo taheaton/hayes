@@ -4,11 +4,14 @@ import 'angular-ui-router';
 import config from './config';
 
 import HomeController from './controllers/home.controller';
-import AddController from './controllers/add.controller';
+import ContactController from './controllers/contact.controller';
 import ListController from './controllers/list.controller';
 import SingleController from './controllers/single.controller';
+import AboutController from './controllers/about.controller';
 
 import ContactService from './services/contact.service';
+import AboutService from './services/about.service';
+
 
 
 
@@ -25,8 +28,11 @@ angular
   })
   .config(config)
   .controller('HomeController', HomeController)
-  .controller('AddController', AddController)
+  .controller('ContactController', ContactController)
   .controller('ListController', ListController)
   .controller('SingleController', SingleController)
+  .controller('AboutController', AboutController)
+
   .service('ContactService', ContactService)
+  .service('AboutService', AboutService)
 ;

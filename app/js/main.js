@@ -18,24 +18,20 @@ var config = function config($stateProvider, $urlRouterProvider) {
     templateUrl: 'templates/home.tpl.html'
   }).state('root.about', {
     url: '/about',
-    controller: 'HomeController',
+    controller: 'AboutController',
     templateUrl: 'templates/about.tpl.html'
   }).state('root.contact', {
     url: '/contact',
-    controller: 'HomeController',
+    controller: 'ContactController',
     templateUrl: 'templates/contact.tpl.html'
   }).state('root.list', {
     url: '/',
     controller: 'ListController',
     templateUrl: 'templates/list.tpl.html'
   }).state('root.single', {
-    url: '/single/:whiskeyId',
+    url: '/single/:contactId',
     controller: 'SingleController',
     templateUrl: 'templates/single.tpl.html'
-  }).state('root.add', {
-    url: '/add',
-    controller: 'AddController',
-    templateUrl: 'templates/add.tpl.html'
   });
 };
 
@@ -45,24 +41,41 @@ exports['default'] = config;
 module.exports = exports['default'];
 
 },{}],2:[function(require,module,exports){
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, '__esModule', {
+Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var AddController = function AddController($scope, ContactService) {
+var AboutController = function AboutController($scope) {
+  $scope.title = "Picture ";
+  $scope.titletwo = "Information";
+  $scope.img = "https://scontent-atl3-1.xx.fbcdn.net/hphotos-xfp1/v/t1.0-9/11700935_10207283178780247_4641038143668188356_n.jpg?oh=436851da59d9bbd041d28eb3ad20b7b4&oe=56BFFE55";
+};
+AboutController.$inject = ['$scope'];
+exports["default"] = AboutController;
+module.exports = exports["default"];
 
+},{}],3:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var ContactController = function ContactController($scope, ContactService) {
+  $scope.title = "Request ";
+  $scope.titletwo = "Information";
   $scope.addContact = function (obj) {
     ContactService.addContact(obj).then(function (res) {
       $scope.contact = {};
+      $scope.message = "Thank you for your submission.";
     });
   };
 };
-AddController.$inject = ['$scope', 'ContactService'];
-exports['default'] = AddController;
-module.exports = exports['default'];
+ContactController.$inject = ['$scope', 'ContactService'];
+exports["default"] = ContactController;
+module.exports = exports["default"];
 
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -70,14 +83,12 @@ Object.defineProperty(exports, '__esModule', {
 });
 var HomeController = function HomeController($scope) {
 
-  $scope.title = 'EXPERT SAS INSTALLATION AND ADMINISTRATION';
+  $scope.title = 'EXPERT ';
+  $scope.titletwo = 'SAS ';
+  $scope.titlethree = 'INSTALLATION AND ADMINISTRATION';
   $scope.titleTwo = 'SAS Enterprise Consulting';
 
   $scope.aboutText = 'I am some about text';
-
-  $scope.contactText = 'I am some contact text';
-
-  
 };
 
 HomeController.$inject = ['$scope'];
@@ -85,7 +96,7 @@ HomeController.$inject = ['$scope'];
 exports['default'] = HomeController;
 module.exports = exports['default'];
 
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -101,7 +112,7 @@ ListController.$inject = ['$scope', 'ContactService'];
 exports['default'] = ListController;
 module.exports = exports['default'];
 
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -117,7 +128,7 @@ SingleController.$inject = ['$scope', '$stateParams', 'ContactService'];
 exports['default'] = SingleController;
 module.exports = exports['default'];
 
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 'use strict';
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -136,9 +147,9 @@ var _controllersHomeController = require('./controllers/home.controller');
 
 var _controllersHomeController2 = _interopRequireDefault(_controllersHomeController);
 
-var _controllersAddController = require('./controllers/add.controller');
+var _controllersContactController = require('./controllers/contact.controller');
 
-var _controllersAddController2 = _interopRequireDefault(_controllersAddController);
+var _controllersContactController2 = _interopRequireDefault(_controllersContactController);
 
 var _controllersListController = require('./controllers/list.controller');
 
@@ -148,9 +159,17 @@ var _controllersSingleController = require('./controllers/single.controller');
 
 var _controllersSingleController2 = _interopRequireDefault(_controllersSingleController);
 
+var _controllersAboutController = require('./controllers/about.controller');
+
+var _controllersAboutController2 = _interopRequireDefault(_controllersAboutController);
+
 var _servicesContactService = require('./services/contact.service');
 
 var _servicesContactService2 = _interopRequireDefault(_servicesContactService);
+
+var _servicesAboutService = require('./services/about.service');
+
+var _servicesAboutService2 = _interopRequireDefault(_servicesAboutService);
 
 _angular2['default'].module('app', ['ui.router']).constant('PARSE', {
   URL: "https://api.parse.com/1/",
@@ -160,23 +179,36 @@ _angular2['default'].module('app', ['ui.router']).constant('PARSE', {
       'X-Parse-REST-API-Key': 'TJduuakbFPVCAyNbAFqWyXfBej9oMilyvM0gZWzx'
     }
   }
-}).config(_config2['default']).controller('HomeController', _controllersHomeController2['default']).controller('AddController', _controllersAddController2['default']).controller('ListController', _controllersListController2['default']).controller('SingleController', _controllersSingleController2['default']).service('ContactService', _servicesContactService2['default']);
+}).config(_config2['default']).controller('HomeController', _controllersHomeController2['default']).controller('ContactController', _controllersContactController2['default']).controller('ListController', _controllersListController2['default']).controller('SingleController', _controllersSingleController2['default']).controller('AboutController', _controllersAboutController2['default']).service('ContactService', _servicesContactService2['default']).service('AboutService', _servicesAboutService2['default']);
 
-},{"./config":1,"./controllers/add.controller":2,"./controllers/home.controller":3,"./controllers/list.controller":4,"./controllers/single.controller":5,"./services/contact.service":7,"angular":10,"angular-ui-router":8}],7:[function(require,module,exports){
+},{"./config":1,"./controllers/about.controller":2,"./controllers/contact.controller":3,"./controllers/home.controller":4,"./controllers/list.controller":5,"./controllers/single.controller":6,"./services/about.service":8,"./services/contact.service":9,"angular":12,"angular-ui-router":10}],8:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var WhiskeyService = function WhiskeyService($http, PARSE) {
+var AboutService = function AboutService($http, PARSE) {};
 
-  var url = PARSE.URL + 'classes/whiskey';
+AboutService.$inject = ['$http', 'PARSE'];
+
+exports['default'] = AboutService;
+module.exports = exports['default'];
+
+},{}],9:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+var ContactService = function ContactService($http, PARSE) {
+
+  var url = PARSE.URL + 'classes/contact';
 
   var checkAuth = function checkAuth() {
     return true;
   };
 
-  this.getWhiskeys = function () {
+  this.getContacts = function () {
     if (checkAuth()) {
       return $http({
         url: url,
@@ -187,35 +219,37 @@ var WhiskeyService = function WhiskeyService($http, PARSE) {
     }
   };
 
-  this.getWhiskey = function (whiskeyId) {
+  this.getContact = function (contactId) {
     if (checkAuth()) {
       return $http({
         method: 'GET',
-        url: url + '/' + whiskeyId,
+        url: url + '/' + contactId,
         headers: PARSE.CONFIG.headers,
         cache: true
       });
     }
   };
 
-  var Whiskey = function Whiskey(obj) {
+  var Contact = function Contact(obj) {
     this.name = obj.name;
-    this.maker = obj.maker;
-    this.hasTried = false;
+    this.company = obj.company;
+    this.email = obj.email;
+    this.phone = obj.phone;
+    this.comment = obj.comment;
   };
 
-  this.addWhiskey = function (obj) {
-    var w = new Whiskey(obj);
-    return $http.post(url, w, PARSE.CONFIG);
+  this.addContact = function (obj) {
+    var c = new Contact(obj);
+    return $http.post(url, c, PARSE.CONFIG);
   };
 };
 
-WhiskeyService.$inject = ['$http', 'PARSE'];
+ContactService.$inject = ['$http', 'PARSE'];
 
-exports['default'] = WhiskeyService;
+exports['default'] = ContactService;
 module.exports = exports['default'];
 
-},{}],8:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 /**
  * State-based routing for AngularJS
  * @version v0.2.15
@@ -4586,7 +4620,7 @@ angular.module('ui.router.state')
   .filter('isState', $IsStateFilter)
   .filter('includedByState', $IncludedByStateFilter);
 })(window, window.angular);
-},{}],9:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.7
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -33491,11 +33525,11 @@ $provide.value("$locale", {
 })(window, document);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],10:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":9}]},{},[6])
+},{"./angular":11}]},{},[7])
 
 
 //# sourceMappingURL=main.js.map

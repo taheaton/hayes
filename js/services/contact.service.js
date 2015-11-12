@@ -1,12 +1,12 @@
-let WhiskeyService = function($http, PARSE) {
+let ContactService = function($http, PARSE) {
   
-  let url = PARSE.URL + 'classes/whiskey';
+  let url = PARSE.URL + 'classes/contact';
 
   let checkAuth = function () {
     return true;
   };
 
-  this.getWhiskeys = function () {
+  this.getContacts = function () {
     if (checkAuth()){     
       return $http({
         url: url,
@@ -17,30 +17,33 @@ let WhiskeyService = function($http, PARSE) {
     }
   };
 
-  this.getWhiskey = function (whiskeyId) {
+  this.getContact = function (contactId) {
     if (checkAuth()){      
       return $http({
         method: 'GET',
-        url: url + '/' + whiskeyId,
+        url: url + '/' + contactId,
         headers: PARSE.CONFIG.headers,
         cache: true
       });
     }
   };
 
-  let Whiskey = function (obj) {
+  let Contact = function (obj) {
     this.name = obj.name;
-    this.maker = obj.maker;
-    this.hasTried = false;
+    this.company = obj.company;
+    this.email = obj.email;
+    this.phone = obj.phone;
+    this.comment= obj.comment;
+
   };
 
-  this.addWhiskey = function (obj) {
-    let w = new Whiskey(obj);
-    return $http.post(url, w, PARSE.CONFIG);
+  this.addContact = function (obj) {
+    let c = new Contact(obj);
+    return $http.post(url, c, PARSE.CONFIG);
   };
 
 };
 
-WhiskeyService.$inject = ['$http', 'PARSE'];
+ContactService.$inject = ['$http', 'PARSE'];
 
-export default WhiskeyService;
+export default ContactService;
