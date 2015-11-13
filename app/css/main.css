@@ -8416,21 +8416,21 @@ body {
   color: white; }
 
 .top-title span {
-  color: #76EE00; }
+  color: #8FBC8F; }
 
 .top-bar {
-  border-top: 2px solid #76EE00;
-  border-bottom: 2px solid #76EE00;
+  border-top: 2px solid #8FBC8F;
+  border-bottom: 2px solid #8FBC8F;
   opacity: 1.0;
   margin-bottom: 15px; }
 
 .top-bar a {
   height: 40px; }
 
-.fa {
+.fa-twitter, .fa-linkedin-square, .fa-envelope {
   float: right;
   margin: 13px;
-  color: #76EE00;
+  color: #8FBC8F;
   font-size: 85%; }
 
 .homecontainer {
@@ -8445,7 +8445,7 @@ body {
   max-width: 450pt; }
 
 .homecontainer span {
-  color: #76EE00; }
+  color: #8FBC8F; }
 
 .homecontainer p {
   color: white;
@@ -8461,7 +8461,7 @@ body {
   margin-right: auto;
   max-width: 400px;
   text-align: center;
-  border: 2px solid #76EE00;
+  border: 2px solid #8FBC8F;
   opacity: 0.9;
   background-color: #2a200a;
   background-image: -webkit-linear-gradient(bottom, #2a200a, #3f3c48);
@@ -8481,7 +8481,7 @@ body {
     color: white; }
 
 button {
-  background-color: #76EE00;
+  background-color: #8FBC8F;
   color: black;
   border-radius: 10px;
   width: 50%;
@@ -8490,24 +8490,40 @@ button {
 
 .about-container {
   width: 1170px;
-  height: 540px;
+  height: auto;
   background-color: #171717;
   background-image: -webkit-linear-gradient(bottom, #171717, #3B3B3B);
   background-image: linear-gradient(to top,#171717, #3B3B3B);
-  opacity: 0.99;
   margin-left: auto;
   margin-right: auto;
+  border-radius: 40px;
+  padding: 25px; }
+
+.about-left {
+  max-width: 500px;
+  color: white; }
+
+hr {
+  color: #8FBC8F;
+  border: 1px solid #8FBC8F; }
+
+.about-right {
+  color: white;
+  float: right;
+  display: inline; }
+
+.about-right img {
+  max-width: 450px;
   border-radius: 40px; }
 
-.about-p {
-  color: white;
-  margin: 50px; }
+.about-right h5 {
+  color: #8FBC8F; }
 
-.about-container img {
-  margin-left: 150px;
-  margin-right: auto;
-  max-width: 450px;
-  border-radius: 40px;
-  opacity: none; }
+.about-left li {
+  list-style: none;
+  margin-left: 10px; }
+
+.fa-wrench {
+  color: #8FBC8F; }
 
 /*# sourceMappingURL=main.css.map */
