@@ -10,9 +10,15 @@ $font-title: 'Play', sans-serif;
 $font-content: 'Syncopate', sans-serif;
 
 // index formatting
-body {
-  //@include linear-gradient(to top, #DCDCDC, #98F5FF);
+html {
+  height: 100%;
+  }
+  body {
+ // @include linear-gradient(to top, #DCDCDC, #98F5FF);
   background : url("https://images.unsplash.com/photo-1443557661966-8b4795a6f62c?ixlib=rb-0.3.5&q=80&fm=jpg&w=1080&fit=max&s=90c9b93842dc0e7f838e81f6b1116852") ;
+ // background-repeat: no-repeat;
+  @include linear-gradient(to right, #100f16,  black);
+  min-height: 100%;
 }
 .top-title {
   font-family: $font-title;
@@ -41,31 +47,30 @@ body {
 
 // Home Formatting
 .homecontainer {
-  margin-left: 62px;
+  background : url("https://images.unsplash.com/photo-1443557661966-8b4795a6f62c?ixlib=rb-0.3.5&q=80&fm=jpg&w=1080&fit=max&s=90c9b93842dc0e7f838e81f6b1116852") ;
+  background-repeat: no-repeat;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1100px;
+  border-radius: 5px;
+
   }
   .homecontainer h2{
   color: white;
   font-family: $font-content;
-  padding: 0pt;
-  margin-left: 20pt;
+  height: 700px;
+  //padding: 0pt;
+  //margin-left: 20pt;
   //background-color: blue;
   opacity: 0.5;
-  max-width: 450pt;
+  //max-width: 450pt;
   //text-align: center;
 }
 .homecontainer span {
   color: $accent-color;
 }
-.homecontainer p{
-  color: white;
-  font-family: $font-content;
-  padding: 0pt;
-  margin-left: 20pt;
-  //background-color: blue;
-  opacity: 0.5;
-  max-width: 450pt;
-  text-align: center;
-}
+
 
 // Contact Page Formatting
 .contact-form {
@@ -101,11 +106,14 @@ body {
     height: 50%;
     padding: 5px;
 }
+.contact-form p {
+  color: white;
+}
 //About Page
 .about-container {
   
   width: 1170px;
-  height: auto;
+  height: 100%;
   @include linear-gradient(to top, #171717, #3B3B3B);
   margin-left: auto;
   margin-right: auto;

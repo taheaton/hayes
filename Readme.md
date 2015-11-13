@@ -1,6 +1,8 @@
 ## Welcome to My Project
 
-> I am your Readme.md file, you should probably update me.
+> This project was developed for J.S. Hayes, Inc.  J.S. Hayes Inc. requests a simple, attractive web presence as a marketing tool as well as an additional information delivery system.
+
+The goal was to provide a professional site with information on what the company does and a way to contact the company.
 
 
 ## Usage
@@ -8,6 +10,11 @@
 - Clone this repo
 - Run `npm install` to install all necessary dependencies
 - Run `gulp start` to start the server and a handful of other tasks
+
+This project also uses Angular and Angular Router, both of which are necessary for full functionality.
+
+-npm install angular-ui-router --save
+-npm install angular --save
 
 
 ## Assets Installed By Default

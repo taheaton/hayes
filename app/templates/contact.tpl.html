@@ -10,6 +10,8 @@
     <input placeholder="phone" ng-model="contact.phone" type="tel">
     <textarea placeholder="What can we help you with?" ng-model="contact.comment"></textarea>
 
-    <button>Submit</button>
+    <button ng-click = "incrementByOne()">Submit</button>
+    <p ng-click = "incrementByOne()"> {{ message }}</p>
   </form>
+
   </div>
