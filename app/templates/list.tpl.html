@@ -1,7 +1,9 @@
-<h3>My Contacts</h3>
+<div class="list-container"
+  <h3>My Contacts</h3>
 
 <ul>
   <li ng-repeat="contact in contacts">
-    <a href="#/single/{{ contact.objectId }}">{{ contact.name }} from {{ contact.email }}</a>
+    <a href="#/single/{{ contact.objectId }}">{{ contact.name }} from {{ contact.company }}</a>
   </li>
 </ul>
+</div>

@@ -25,7 +25,7 @@ var config = function config($stateProvider, $urlRouterProvider) {
     controller: 'ContactController',
     templateUrl: 'templates/contact.tpl.html'
   }).state('root.list', {
-    url: '/',
+    url: '/admin',
     controller: 'ListController',
     templateUrl: 'templates/list.tpl.html'
   }).state('root.single', {
@@ -122,13 +122,17 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var ListController = function ListController($scope, ContactService) {
+var ListController = function ListController($scope, $http, PARSE) {
 
-  ContactService.getContacts().then(function (res) {
+  var url = PARSE.URL + 'classes/contact';
+
+  $http.get(url, PARSE.CONFIG).then(function (res) {
     $scope.contacts = res.data.results;
   });
 };
-ListController.$inject = ['$scope', 'ContactService'];
+
+ListController.$inject = ['$scope', '$http', 'PARSE'];
+
 exports['default'] = ListController;
 module.exports = exports['default'];
 

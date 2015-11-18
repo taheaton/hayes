@@ -24,7 +24,7 @@ let config = function ($stateProvider, $urlRouterProvider) {
       templateUrl: 'templates/contact.tpl.html'
     })
     .state('root.list', {
-      url: '/',
+      url: '/admin',
       controller: 'ListController',
       templateUrl: 'templates/list.tpl.html'
     })

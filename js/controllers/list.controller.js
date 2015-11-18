@@ -1,9 +1,13 @@
-let ListController = function($scope, ContactService) {
+let ListController = function($scope, $http, PARSE) {
+  
+  let url = PARSE.URL + 'classes/contact';
 
-  ContactService.getContacts().then ( (res) => {
+  $http.get(url, PARSE.CONFIG).then( (res) => {
     $scope.contacts = res.data.results;
   });
 
 };
-ListController.$inject = ['$scope', 'ContactService'];
+
+ListController.$inject = ['$scope', '$http', 'PARSE'];
+
 export default ListController;

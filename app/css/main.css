@@ -8412,9 +8412,9 @@ html {
 
 body {
   background: url("https://images.unsplash.com/photo-1443557661966-8b4795a6f62c?ixlib=rb-0.3.5&q=80&fm=jpg&w=1080&fit=max&s=90c9b93842dc0e7f838e81f6b1116852");
-  background-color: #100f16;
-  background-image: -webkit-linear-gradient(left, #100f16, black);
-  background-image: linear-gradient(to right,#100f16, black);
+  background-color: black;
+  background-image: -webkit-linear-gradient(left, black, black, #3D3D3D, grey, #3D3D3D, black);
+  background-image: linear-gradient(to right,black, black, #3D3D3D, grey, #3D3D3D, black);
   min-height: 100%; }
 
 .top-title {
@@ -8432,7 +8432,8 @@ body {
   margin-bottom: 15px; }
 
 .top-bar a {
-  height: 40px; }
+  height: 40px;
+  font-family: "Play", sans-serif; }
 
 .fa-twitter, .fa-linkedin-square, .fa-envelope {
   float: right;
@@ -8530,5 +8531,11 @@ hr {
 
 .fa-wrench {
   color: #8FBC8F; }
+
+.list-container {
+  color: white; }
+
+.single {
+  color: white; }
 
 /*# sourceMappingURL=main.css.map */

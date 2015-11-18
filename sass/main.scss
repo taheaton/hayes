@@ -17,7 +17,7 @@ html {
  // @include linear-gradient(to top, #DCDCDC, #98F5FF);
   background : url("https://images.unsplash.com/photo-1443557661966-8b4795a6f62c?ixlib=rb-0.3.5&q=80&fm=jpg&w=1080&fit=max&s=90c9b93842dc0e7f838e81f6b1116852") ;
  // background-repeat: no-repeat;
-  @include linear-gradient(to right, #100f16,  black);
+  @include linear-gradient(to right, black, black, #3D3D3D, grey, #3D3D3D,  black);
   min-height: 100%;
 }
 .top-title {
@@ -34,9 +34,11 @@ html {
   border-bottom: 2px solid $accent-color;
   opacity: 1.0;
   margin-bottom: 15px;
+
 }
 .top-bar a {
   height: 40px;
+  font-family: $font-title;
 }
 .fa-twitter, .fa-linkedin-square, .fa-envelope {
   float: right;
@@ -155,6 +157,14 @@ ul {
 .fa-wrench {
   color: $accent-color;
 }
+.list-container {
+  color: white;
+}
+.single {
+  color: white;
+}
+
+
 
 
 
